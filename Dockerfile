@@ -44,16 +44,16 @@ COPY dependencies/* /
 # ####################
 # # Run NPM Installs #
 # ####################
-RUN npm config set package-lock false \
-&& npm config set loglevel error \
-&& npm --no-cache install
+#RUN npm config set package-lock false \
+#&& npm config set loglevel error \
+#&& npm --no-cache install
 # # Add node packages to path
-ENV PATH="/node_modules/.bin:${PATH}"
+#ENV PATH="/node_modules/.bin:${PATH}"
 
 # ##############################
 # # Installs ruby dependencies #
 # ##############################
-RUN bundle install
+#RUN bundle install
 
 ######################
 # Make the directory #
