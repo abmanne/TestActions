@@ -10,8 +10,8 @@ FROM myoung34/github-runner:latest
 #########################################
 # Variables #
 #########################################
-ARG orgname="organization name"
-ARG reponame="repository name"
+ARG orgname="LukasPersonal"
+ARG reponame="TestActions"
 
 #########################################
 # Label the instance and set maintainer #
@@ -36,24 +36,24 @@ COPY dependencies/* /
 # ################################
 # # Installs python dependencies #
 # ################################
-# RUN pip3 install --no-cache-dir pipenv
+RUN pip3 install --no-cache-dir pipenv
 # # Bug in hadolint thinks pipenv is pip
 # # hadolint ignore=DL3042
-# RUN pipenv install --clear --system
+RUN pipenv install --clear --system
 
 # ####################
 # # Run NPM Installs #
 # ####################
-# RUN npm config set package-lock false \
-# && npm config set loglevel error \
-# && npm --no-cache install
+RUN npm config set package-lock false \
+&& npm config set loglevel error \
+&& npm --no-cache install
 # # Add node packages to path
-# ENV PATH="/node_modules/.bin:${PATH}"
+ENV PATH="/node_modules/.bin:${PATH}"
 
 # ##############################
 # # Installs ruby dependencies #
 # ##############################
-# RUN bundle install
+RUN bundle install
 
 ######################
 # Make the directory #
